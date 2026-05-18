@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-olive:   #53603E;
+  --color-olive-light: #EEF0E6;
+  --color-olive-hover: #F5F3E8;
+  --color-cream:   #F5F1DD;
+  --color-amber-fitin: #FBA327;
+  --color-earth:   #6D412A;
+  --color-bg-fitin: #FAFAF5;
+  --color-surface-fitin: #FFFFFF;
+  --color-border-fitin: #E8E4D4;
+  --color-muted-fitin: #8A8577;
+  --color-fg-fitin: #2D2D2A;
+  --color-error-fitin: #DC2626;
+
+  --font-heading: 'Syne', sans-serif;
+  --font-body:    'Satoshi', 'Inter', sans-serif;
+
+  --radius-card:    14px;
+  --radius-input:   12px;
+  --radius-button:  14px;
+  --radius-profile: 24px;
+  --radius-icon:    12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: #FAFAF5;
+  color: #2D2D2A;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.3;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
