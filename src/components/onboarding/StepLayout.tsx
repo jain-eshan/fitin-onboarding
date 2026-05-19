@@ -18,7 +18,7 @@ export default function StepLayout({
   const showStep = stepIndex > 0 && stepIndex <= TOTAL_QUIZ_STEPS
 
   return (
-    <div className="flex min-h-dvh flex-col bg-[#FAFAF5]">
+    <div className="flex min-h-dvh flex-col bg-white">
       {/* Top bar: back button + step counter */}
       <div className="flex items-center justify-between px-5 pt-5 pb-1">
         <div className="flex w-8 items-center">
