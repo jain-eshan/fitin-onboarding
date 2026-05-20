@@ -1,5 +1,7 @@
-import { motion, type Variants } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import type { FitnessProfile } from '../../types/onboarding'
+import CalendarPicker, { type BookingResult } from './CalendarPicker'
 
 const WHATSAPP_NUMBER = (import.meta.env.VITE_WHATSAPP_NUMBER as string) ?? ''
 
@@ -20,14 +22,31 @@ const itemVariants: Variants = {
 type ProfileCardProps = {
   profile: FitnessProfile
   name: string
+  email: string
 }
 
-export default function ProfileCard({ profile, name }: ProfileCardProps) {
+export default function ProfileCard({ profile, name, email }: ProfileCardProps) {
   const firstName = name.split(' ')[0]
+  // Once the calendar is opened, keep it mounted so it can show its own success state
+  const [calendarMounted, setCalendarMounted] = useState(false)
+  const [showCalendar, setShowCalendar] = useState(false)
+  const [booked, setBooked] = useState(false)
+
   const waMessage = encodeURIComponent(
-    `Hi! I just completed my FitIn profile — I'm "${profile.label}". Looking forward to chatting!`
+    `Hi! I just completed my FitIn fitness quiz — I'm "${profile.label}". Would love to chat about getting started!`
   )
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`
+
+  const handleBookButtonClick = () => {
+    if (!calendarMounted) setCalendarMounted(true)
+    setShowCalendar(prev => !prev)
+  }
+
+  const handleBooked = (_result: BookingResult) => {
+    setBooked(true)
+    // Keep calendar visible to show its success state
+    setShowCalendar(true)
+  }
 
   return (
     <div className="flex flex-col gap-6 pb-8">
@@ -67,12 +86,7 @@ export default function ProfileCard({ profile, name }: ProfileCardProps) {
               <path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 1.62-.49 3.13-1.32 4.39l1.46 1.46A9.94 9.94 0 0022 12c0-5.18-3.95-9.45-9-9.95zM12 20c-4.42 0-8-3.58-8-8 0-3.49 2.24-6.45 5.35-7.52l.65 1.9A6 6 0 006 12c0 3.31 2.69 6 6 6 1.52 0 2.9-.57 3.96-1.5l1.46 1.46A7.96 7.96 0 0112 20zm0-12a4 4 0 100 8 4 4 0 000-8z" fill="currentColor"/>
             </svg>
           </div>
-          <span
-            className="text-[15px] font-semibold tracking-[-0.02em] text-[#53603E]"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            fit in<span className="text-[#FBA327]">.</span> club
-          </span>
+          <img src="/fitin-logo.png" alt="FitIn Club" className="h-7 w-auto object-contain" />
         </motion.div>
 
         <motion.div variants={itemVariants} className="mb-5">
@@ -137,16 +151,32 @@ export default function ProfileCard({ profile, name }: ProfileCardProps) {
 
       {/* CTAs */}
       <div className="flex flex-col gap-3">
-        <a
-          href="#"
-          onClick={e => {
-            e.preventDefault()
-            alert('Calendly integration goes here')
-          }}
-          className="flex h-12 w-full items-center justify-center rounded-[14px] bg-[#53603E] text-[14px] font-semibold text-[#F5F1DD] transition-colors hover:bg-[#475435] active:scale-[0.97]"
-        >
-          Book my intro call
-        </a>
+        {/* Book intro call button — hidden once booked */}
+        {!booked && (
+          <button
+            onClick={handleBookButtonClick}
+            className="flex h-12 w-full items-center justify-center rounded-[14px] bg-[#53603E] text-[14px] font-semibold text-[#F5F1DD] transition-colors hover:bg-[#475435] active:scale-[0.97]"
+          >
+            {showCalendar ? 'Hide calendar' : 'Book my intro call'}
+          </button>
+        )}
+
+        {/*
+          CalendarPicker is mounted once and kept alive (via display:none when hidden)
+          so its internal state (success card) persists after booking.
+        */}
+        {calendarMounted && (
+          <AnimatePresence>
+            {showCalendar && (
+              <CalendarPicker
+                leadName={name}
+                leadEmail={email}
+                onBooked={handleBooked}
+              />
+            )}
+          </AnimatePresence>
+        )}
+
         <a
           href={waUrl}
           target="_blank"

@@ -35,3 +35,29 @@ export async function notifySubmission(lead: {
     console.warn('Notification webhook failed:', err)
   }
 }
+
+export async function notifyBooking(booking: {
+  lead_name: string
+  lead_email: string
+  trainer_name: string
+  slot_date: string
+  slot_start: string
+  slot_end: string
+}) {
+  const webhookUrl = import.meta.env.VITE_NOTIFY_WEBHOOK_URL as string | undefined
+  if (!webhookUrl) return
+
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'booking',
+        ...booking,
+        booked_at: new Date().toISOString(),
+      }),
+    })
+  } catch (err) {
+    console.warn('Booking notification failed:', err)
+  }
+}

@@ -206,7 +206,7 @@ export default function OnboardingFlow() {
             </div>
           )}
           {currentStep === 'profile' && profile && (
-            <ProfileCard profile={profile} name={answers.name} />
+            <ProfileCard profile={profile} name={answers.name} email={answers.email} />
           )}
         </motion.div>
       </AnimatePresence>

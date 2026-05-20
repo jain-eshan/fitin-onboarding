@@ -76,7 +76,7 @@ export const ContactSchema = z.object({
     .min(10, 'Enter a valid WhatsApp number')
     .regex(/^[0-9+\s\-()]{10,15}$/, 'Enter a valid phone number'),
   city: z.string().min(2, 'Enter your city'),
-  email: z.string().email('Enter a valid email').optional().or(z.literal('')),
+  email: z.string().email('Enter a valid email'),
 })
 
 export type ContactFormData = z.infer<typeof ContactSchema>
