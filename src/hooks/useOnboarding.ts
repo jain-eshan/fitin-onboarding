@@ -16,14 +16,11 @@ function loadFromSession(): { stepIndex: number; answers: OnboardingAnswers } | 
 function saveToSession(stepIndex: number, answers: OnboardingAnswers) {
   try {
     sessionStorage.setItem(SESSION_KEY, JSON.stringify({ stepIndex, answers }))
-  } catch {
-    // sessionStorage unavailable
-  }
+  } catch {}
 }
 
 export function useOnboarding() {
   const saved = typeof window !== 'undefined' ? loadFromSession() : null
-
   const [stepIndex, setStepIndex] = useState(saved?.stepIndex ?? 0)
   const [answers, setAnswers] = useState<OnboardingAnswers>(saved?.answers ?? defaultAnswers)
   const [direction, setDirection] = useState<1 | -1>(1)
@@ -59,6 +56,17 @@ export function useOnboarding() {
     [stepIndex]
   )
 
+  const updateAnswers = useCallback(
+    (updates: Partial<OnboardingAnswers>) => {
+      setAnswers(prev => {
+        const next = { ...prev, ...updates }
+        saveToSession(stepIndex, next)
+        return next
+      })
+    },
+    [stepIndex]
+  )
+
   const toggleArrayAnswer = useCallback(
     (key: 'goals' | 'barriers', value: string) => {
       setAnswers(prev => {
@@ -81,9 +89,11 @@ export function useOnboarding() {
     setDirection(1)
   }, [])
 
-  const progressPercent = stepIndex === 0 ? 0 : Math.round((stepIndex / 8) * 100)
-
-  const quizStepNumber = stepIndex
+  // stepIndex 0 = intro (no progress), 1-8 = quiz steps, 9 = profile
+  const progressPercent =
+    stepIndex === 0 ? 0
+    : stepIndex >= 9 ? 100
+    : Math.round((stepIndex / 8) * 100)
 
   return {
     currentStep,
@@ -93,10 +103,10 @@ export function useOnboarding() {
     goNext,
     goBack,
     updateAnswer,
+    updateAnswers,
     toggleArrayAnswer,
     reset,
     progressPercent,
-    quizStepNumber,
     isFirst: stepIndex === 0,
     isProfile: currentStep === 'profile',
   }

@@ -9,12 +9,14 @@ const OPTIONS = [
 ]
 
 type BarriersStepProps = {
+  name?: string
   value: string[]
   onToggle: (val: string) => void
   onNext: () => void
 }
 
-export default function BarriersStep({ value, onToggle, onNext }: BarriersStepProps) {
+export default function BarriersStep({ name, value, onToggle, onNext }: BarriersStepProps) {
+  const firstName = name ? name.split(' ')[0] : ''
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
@@ -22,11 +24,9 @@ export default function BarriersStep({ value, onToggle, onNext }: BarriersStepPr
           className="text-[22px] font-semibold tracking-[-0.02em] text-[#2D2D2A] leading-[1.3]"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
-          What's made it hard to stay consistent?
+          {firstName ? `What's held you back, ${firstName}?` : `What's made it hard to stay consistent?`}
         </h2>
-        <span className="inline-flex self-start rounded-[6px] bg-[#F0EDE0] px-2 py-1 text-[11px] font-medium text-[#6D412A]">
-          Select all that apply
-        </span>
+        <p className="text-[13px] text-[#8A8577]">Honest answers help us help you.</p>
       </div>
 
       <div className="flex flex-col gap-2.5" role="group" aria-label="Barriers to consistency">

@@ -4,7 +4,6 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  // Throw at runtime, not at module load, so build still passes if env not set yet
   console.warn('Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY')
 }
 
@@ -17,7 +16,7 @@ export async function submitOnboardingLead(lead: {
   name: string
   phone: string
   email?: string
-  age: number
+  age: number | null
   city: string
   activity_level: string | null
   goals: string[]

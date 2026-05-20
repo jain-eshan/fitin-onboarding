@@ -10,12 +10,13 @@ const OPTIONS = [
 ]
 
 type BodyStepProps = {
+  name?: string
   value: string | null
   onChange: (val: string) => void
   onNext: () => void
 }
 
-export default function BodyStep({ value, onChange, onNext }: BodyStepProps) {
+export default function BodyStep({ value, onChange, onNext }: BodyStepProps) {  // name prop accepted but not used in heading
   const [freeText, setFreeText] = useState('')
   const [localSelection, setLocalSelection] = useState<string | null>(null)
 

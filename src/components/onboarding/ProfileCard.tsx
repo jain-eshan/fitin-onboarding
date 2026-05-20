@@ -23,6 +23,7 @@ type ProfileCardProps = {
 }
 
 export default function ProfileCard({ profile, name }: ProfileCardProps) {
+  const firstName = name.split(' ')[0]
   const waMessage = encodeURIComponent(
     `Hi! I just completed my FitIn profile — I'm "${profile.label}". Looking forward to chatting!`
   )
@@ -30,18 +31,20 @@ export default function ProfileCard({ profile, name }: ProfileCardProps) {
 
   return (
     <div className="flex flex-col gap-6 pb-8">
+      {/* Success header */}
       <div className="flex flex-col gap-1">
-        <p className="text-[13px] text-[#8A8577]">
-          Hey {name.split(' ')[0]} 👋
-        </p>
         <h2
-          className="text-[22px] font-semibold tracking-[-0.02em] text-[#2D2D2A] leading-[1.3]"
+          className="text-[24px] font-semibold tracking-[-0.02em] text-[#2D2D2A] leading-[1.25]"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
-          Here's your fitness profile.
+          You're all set, {firstName}! 🎉
         </h2>
+        <p className="text-[13px] text-[#8A8577]">
+          Your trainer will reach out on WhatsApp within 24 hours.
+        </p>
       </div>
 
+      {/* Profile card */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -113,6 +116,26 @@ export default function ProfileCard({ profile, name }: ProfileCardProps) {
         </motion.div>
       </motion.div>
 
+      {/* What happens next */}
+      <div className="flex flex-col gap-3">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.06em] text-[#8A8577]">
+          What happens next
+        </p>
+        {[
+          { step: '1', text: 'Your trainer reviews your profile' },
+          { step: '2', text: 'They reach out on WhatsApp within 24 hours' },
+          { step: '3', text: 'You get a free 1:1 intro call — no commitment' },
+        ].map(item => (
+          <div key={item.step} className="flex items-start gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#EEF0E6] text-[11px] font-bold text-[#53603E]">
+              {item.step}
+            </span>
+            <p className="text-[13px] text-[#2D2D2A] pt-0.5">{item.text}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* CTAs */}
       <div className="flex flex-col gap-3">
         <a
           href="#"
@@ -132,17 +155,6 @@ export default function ProfileCard({ profile, name }: ProfileCardProps) {
         >
           Message us on WhatsApp
         </a>
-        <p className="text-center text-[12px] text-[#B8B3A0]">
-          or{' '}
-          <button
-            onClick={() => {
-              alert('Account creation goes here')
-            }}
-            className="underline underline-offset-2 hover:text-[#53603E] transition-colors"
-          >
-            create an account to save your profile
-          </button>
-        </p>
       </div>
     </div>
   )

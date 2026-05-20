@@ -8,12 +8,13 @@ const OPTIONS = [
 ]
 
 type DietStepProps = {
+  name?: string
   value: string | null
   onChange: (val: string) => void
   onNext: () => void
 }
 
-export default function DietStep({ value, onChange, onNext }: DietStepProps) {
+export default function DietStep({ value, onChange, onNext }: DietStepProps) {  // name prop accepted but not used in heading
   useEffect(() => {
     if (!value) return
     const timer = setTimeout(onNext, 400)

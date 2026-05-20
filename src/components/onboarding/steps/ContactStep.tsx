@@ -5,17 +5,34 @@ import Input from '../../ui/Input'
 import Button from '../../ui/Button'
 
 type ContactStepProps = {
+  name: string
+  defaultPhone?: string
+  defaultCity?: string
+  defaultEmail?: string
   onSubmit: (data: ContactFormData) => Promise<void>
   isSubmitting: boolean
 }
 
-export default function ContactStep({ onSubmit, isSubmitting }: ContactStepProps) {
+export default function ContactStep({
+  name,
+  defaultPhone,
+  defaultCity,
+  defaultEmail,
+  onSubmit,
+  isSubmitting,
+}: ContactStepProps) {
+  const firstName = name.split(' ')[0]
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(ContactSchema),
+    defaultValues: {
+      phone: defaultPhone ?? '',
+      city: defaultCity ?? '',
+      email: defaultEmail ?? '',
+    },
   })
 
   return (
@@ -25,21 +42,14 @@ export default function ContactStep({ onSubmit, isSubmitting }: ContactStepProps
           className="text-[22px] font-semibold tracking-[-0.02em] text-[#2D2D2A] leading-[1.3]"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
-          Last step — where do we reach you?
+          Almost there, {firstName}.
         </h2>
         <p className="text-[13px] text-[#8A8577]">
-          Your trainer will use this to prepare before your first call.
+          Your trainer will reach out on WhatsApp within 24 hours.
         </p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
-        <Input
-          label="Name"
-          placeholder="Your full name"
-          required
-          error={errors.name?.message}
-          {...register('name')}
-        />
         <Input
           label="WhatsApp Number"
           placeholder="+91 98765 43210"
@@ -48,14 +58,6 @@ export default function ContactStep({ onSubmit, isSubmitting }: ContactStepProps
           error={errors.phone?.message}
           hint="We'll send your profile to this number"
           {...register('phone')}
-        />
-        <Input
-          label="Age"
-          placeholder="28"
-          type="number"
-          required
-          error={errors.age?.message}
-          {...register('age', { valueAsNumber: true })}
         />
         <Input
           label="City"
@@ -69,18 +71,17 @@ export default function ContactStep({ onSubmit, isSubmitting }: ContactStepProps
           placeholder="you@example.com"
           type="email"
           error={errors.email?.message}
-          hint="To save your profile and get updates"
+          hint="To receive your fitness profile summary"
           {...register('email')}
         />
-
-        <Button
-          type="submit"
-          className="w-full mt-2"
-          loading={isSubmitting}
-        >
-          See my fitness profile
+        <Button type="submit" className="w-full mt-2" loading={isSubmitting}>
+          See my fitness profile →
         </Button>
       </form>
+
+      <p className="text-center text-[11px] text-[#B8B3A0]">
+        🔒 Your data is safe and never shared.
+      </p>
     </div>
   )
 }

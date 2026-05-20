@@ -8,12 +8,13 @@ const OPTIONS = [
 ]
 
 type RoutineStepProps = {
+  name?: string
   value: string | null
   onChange: (val: string) => void
   onNext: () => void
 }
 
-export default function RoutineStep({ value, onChange, onNext }: RoutineStepProps) {
+export default function RoutineStep({ value, onChange, onNext }: RoutineStepProps) {  // name prop accepted but not used in heading
   useEffect(() => {
     if (!value) return
     const timer = setTimeout(onNext, 400)

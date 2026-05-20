@@ -9,12 +9,13 @@ const OPTIONS = [
 ]
 
 type ScheduleStepProps = {
+  name?: string
   value: string | null
   onChange: (val: string) => void
   onNext: () => void
 }
 
-export default function ScheduleStep({ value, onChange, onNext }: ScheduleStepProps) {
+export default function ScheduleStep({ value, onChange, onNext }: ScheduleStepProps) {  // name prop accepted but not used in heading
   useEffect(() => {
     if (!value) return
     const timer = setTimeout(onNext, 400)
