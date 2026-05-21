@@ -43,7 +43,7 @@ export async function bookSlot(booking: {
   slot_start: string  // "10:00"
   slot_end: string    // "10:30"
 }) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('onboarding_bookings')
     .insert([{
       lead_name: booking.lead_name,
@@ -54,15 +54,12 @@ export async function bookSlot(booking: {
       slot_end: booking.slot_end,
       status: 'confirmed',
     }])
-    .select('id')
-    .single()
 
   if (error) {
     // Check for unique constraint violation (slot already taken)
     if (error.code === '23505') throw new Error('SLOT_TAKEN')
     throw error
   }
-  return data
 }
 
 export async function getBookedSlots(trainerName: string, slotDate: string): Promise<string[]> {
