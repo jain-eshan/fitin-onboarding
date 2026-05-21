@@ -28,14 +28,11 @@ export async function submitOnboardingLead(lead: {
   recommended_program: string
   source: string
 }) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('onboarding_leads')
     .insert([lead])
-    .select('id')
-    .single()
 
   if (error) throw error
-  return data
 }
 
 export async function bookSlot(booking: {
