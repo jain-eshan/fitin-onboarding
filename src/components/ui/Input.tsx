@@ -23,7 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            'h-12 w-full rounded-[12px] border border-[#E8E4D4] bg-[#FAFAF5] px-4 text-[15px] text-[#2D2D2A]',
+            'h-[46px] w-full rounded-[12px] border-[1.5px] border-[#E2DCC6] bg-white px-4 text-[15px] text-[#241F18]',
             'placeholder:text-[#B8B3A0]',
             'focus:outline-none focus:border-[#53603E] focus:ring-2 focus:ring-[#53603E]/10',
             'transition-colors duration-150',
@@ -35,7 +35,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {hint && !error && (
-          <p id={`${inputId}-hint`} className="text-[12px] text-[#8A8577]">{hint}</p>
+          <p id={`${inputId}-hint`} className="text-[12px] text-[#6E6A5C]">{hint}</p>
         )}
         {error && (
           <p

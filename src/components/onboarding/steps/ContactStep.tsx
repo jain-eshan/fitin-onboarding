@@ -83,12 +83,12 @@ export default function ContactStep({
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <h2
-          className="text-[22px] font-semibold tracking-[-0.02em] text-[#2D2D2A] leading-[1.3]"
+          className="text-[22px] font-semibold tracking-[-0.02em] text-[#241F18] leading-[1.3]"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           Almost there, {firstName}.
         </h2>
-        <p className="text-[13px] text-[#8A8577]">
+        <p className="text-[13px] text-[#6E6A5C]">
           Your trainer will reach out on WhatsApp within 24 hours.
         </p>
       </div>
@@ -104,12 +104,12 @@ export default function ContactStep({
           {/* Unified pill container */}
           <div
             className={[
-              'flex h-12 w-full overflow-hidden rounded-[12px] border bg-[#FAFAF5]',
+              'flex h-12 w-full overflow-hidden rounded-[12px] border bg-[#FBF8EE]',
               'focus-within:border-[#53603E] focus-within:ring-2 focus-within:ring-[#53603E]/10',
               'transition-colors duration-150',
               errors.phone
                 ? 'border-[#DC2626] focus-within:border-[#DC2626] focus-within:ring-[#DC2626]/10'
-                : 'border-[#E8E4D4]',
+                : 'border-[#E2DCC6]',
             ].join(' ')}
           >
             {/* Country code dropdown */}
@@ -120,7 +120,7 @@ export default function ContactStep({
               style={{ width: '90px', minWidth: '90px' }}
               className={[
                 'h-full shrink-0 appearance-none border-none bg-transparent',
-                'pl-3 pr-1 text-[14px] text-[#2D2D2A] cursor-pointer',
+                'pl-3 pr-1 text-[14px] text-[#241F18] cursor-pointer',
                 'focus:outline-none',
               ].join(' ')}
             >
@@ -140,7 +140,7 @@ export default function ContactStep({
               onChange={handleLocalNumberChange}
               className={[
                 'h-full flex-1 min-w-0 border-none bg-transparent',
-                'px-3 text-[15px] text-[#2D2D2A] placeholder:text-[#B8B3A0]',
+                'px-3 text-[15px] text-[#241F18] placeholder:text-[#B8B3A0]',
                 'focus:outline-none',
               ].join(' ')}
             />
@@ -150,7 +150,7 @@ export default function ContactStep({
               {errors.phone.message}
             </p>
           ) : (
-            <p className="text-[12px] text-[#8A8577]">We'll send your profile to this number</p>
+            <p className="text-[12px] text-[#6E6A5C]">We'll send your profile to this number</p>
           )}
         </div>
 

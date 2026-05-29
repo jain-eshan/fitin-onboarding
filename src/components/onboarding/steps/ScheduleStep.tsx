@@ -26,12 +26,12 @@ export default function ScheduleStep({ value, onChange, onNext }: ScheduleStepPr
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <h2
-          className="text-[22px] font-semibold tracking-[-0.02em] text-[#2D2D2A] leading-[1.3]"
+          className="text-[30px] font-semibold tracking-[-0.015em] text-[#241F18] leading-[1.22]"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           When does your schedule have a gap?
         </h2>
-        <p className="text-[13px] text-[#8A8577]">
+        <p className="text-[15px] text-[#6E6A5C]">
           Even 15 minutes is enough to start.
         </p>
       </div>

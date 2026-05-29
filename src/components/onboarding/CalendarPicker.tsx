@@ -233,12 +233,12 @@ export default function CalendarPicker({ leadName, leadEmail, onBooked }: Calend
             Call booked!
           </p>
         </div>
-        <div className="flex flex-col gap-1 text-[13px] text-[#2D2D2A]">
+        <div className="flex flex-col gap-1 text-[13px] text-[#241F18]">
           <p><strong>Trainer:</strong> {success.trainerName}</p>
           <p><strong>Date:</strong> {dayName}, {d.getDate()} {monthName} {d.getFullYear()}</p>
           <p><strong>Time:</strong> {formatDisplayTime(success.startTime)} – {formatDisplayTime(success.endTime)}</p>
         </div>
-        <p className="text-[12px] text-[#8A8577]">
+        <p className="text-[12px] text-[#6E6A5C]">
           We'll send details to <strong>{leadEmail}</strong>
         </p>
       </motion.div>
@@ -257,9 +257,9 @@ export default function CalendarPicker({ leadName, leadEmail, onBooked }: Calend
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
-      className="rounded-[16px] border border-[#E8E4D4] bg-[#FAFAF5] p-4 flex flex-col gap-4"
+      className="rounded-[16px] border border-[#E2DCC6] bg-[#FBF8EE] p-4 flex flex-col gap-4"
     >
-      <p className="text-[13px] font-semibold text-[#2D2D2A]">Pick a date</p>
+      <p className="text-[13px] font-semibold text-[#241F18]">Pick a date</p>
 
       {/* Date row */}
       <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1">
@@ -274,10 +274,10 @@ export default function CalendarPicker({ leadName, leadEmail, onBooked }: Calend
                 'w-[52px] h-[60px] text-center transition-colors duration-150',
                 isSelected
                   ? 'bg-[#53603E] border-[#53603E] text-white'
-                  : 'border-[#E8E4D4] bg-white text-[#2D2D2A] hover:border-[#53603E]',
+                  : 'border-[#E2DCC6] bg-white text-[#241F18] hover:border-[#53603E]',
               ].join(' ')}
             >
-              <span className={['text-[10px] font-medium uppercase tracking-wide', isSelected ? 'text-[#C6D6A8]' : 'text-[#8A8577]'].join(' ')}>
+              <span className={['text-[10px] font-medium uppercase tracking-wide', isSelected ? 'text-[#C6D6A8]' : 'text-[#6E6A5C]'].join(' ')}>
                 {DAY_NAMES[d.getDay()]}
               </span>
               <span className="text-[18px] font-bold leading-tight">{d.getDate()}</span>
@@ -290,7 +290,7 @@ export default function CalendarPicker({ leadName, leadEmail, onBooked }: Calend
       {selectedDate && (
         <div className="flex flex-col gap-4">
           {loadingSlots ? (
-            <p className="text-[13px] text-[#8A8577] text-center py-2">Loading slots…</p>
+            <p className="text-[13px] text-[#6E6A5C] text-center py-2">Loading slots…</p>
           ) : (
             TRAINERS.map((trainer) => {
               const availableSlots = trainer.slots.filter(s => s.days.includes(dayOfWeek))
@@ -326,10 +326,10 @@ export default function CalendarPicker({ leadName, leadEmail, onBooked }: Calend
                           className={[
                             'rounded-full border px-3 py-1.5 text-[12px] font-medium transition-colors duration-150',
                             isBooked
-                              ? 'border-[#E8E4D4] bg-[#F0EDE0] text-[#B8B3A0] cursor-not-allowed line-through'
+                              ? 'border-[#E2DCC6] bg-[#F0EDE0] text-[#B8B3A0] cursor-not-allowed line-through'
                               : isSelected
                               ? 'border-[#53603E] bg-[#53603E] text-white'
-                              : 'border-[#E8E4D4] bg-white text-[#2D2D2A] hover:border-[#53603E] hover:bg-[#EEF0E6]',
+                              : 'border-[#E2DCC6] bg-white text-[#241F18] hover:border-[#53603E] hover:bg-[#EEF0E6]',
                           ].join(' ')}
                         >
                           {formatDisplayTime(slot.start)} – {formatDisplayTime(slot.end)}

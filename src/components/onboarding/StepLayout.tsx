@@ -20,10 +20,10 @@ export default function StepLayout({
   const showStep = stepIndex >= 1 && stepIndex <= TOTAL_QUIZ_STEPS
 
   return (
-    <div className="flex flex-col bg-white" style={{ minHeight: '100dvh' }}>
+    <div className="flex flex-col bg-[#FBF8EE]" style={{ minHeight: '100dvh' }}>
       {/* Top bar: back + step counter */}
       {(showBack || showStep) && (
-        <div className="flex items-center justify-between px-5 pt-5 pb-2">
+        <div className="flex items-center justify-between px-5 pt-5 pb-2 relative">
           <div className="w-8">
             {showBack && (
               <button
@@ -37,13 +37,14 @@ export default function StepLayout({
               </button>
             )}
           </div>
-          <div className="w-8 flex justify-end">
+          <div className="flex-1 flex justify-center">
             {showStep && (
-              <span className="text-[11px] font-medium text-[#8A8577] tabular-nums">
-                {stepIndex}/{TOTAL_QUIZ_STEPS}
+              <span className="text-[11px] font-bold tracking-[0.10em] uppercase text-[#FBA327]">
+                Question {stepIndex} of {TOTAL_QUIZ_STEPS}
               </span>
             )}
           </div>
+          <div className="w-8" />
         </div>
       )}
 

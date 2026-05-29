@@ -3,18 +3,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-olive:   #53603E;
-  --color-olive-light: #EEF0E6;
-  --color-olive-hover: #F5F3E8;
-  --color-cream:   #F5F1DD;
-  --color-amber-fitin: #FBA327;
-  --color-earth:   #6D412A;
-  --color-bg-fitin: #FAFAF5;
+  --color-olive:        #53603E;
+  --color-olive-hover:  #647248;
+  --color-olive-light:  #EEF0E6;
+  --color-olive-hover-bg: #F5F3E8;
+  --color-cream:        #F5F1DD;
+  --color-cream-bg:     #FBF8EE;
+  --color-accent:       #E6DFC8;
+  --color-amber-fitin:  #FBA327;
+  --color-earth:        #6D412A;
+  --color-bg-fitin:     #FBF8EE;
   --color-surface-fitin: #FFFFFF;
-  --color-border-fitin: #E8E4D4;
-  --color-muted-fitin: #8A8577;
-  --color-fg-fitin: #2D2D2A;
-  --color-error-fitin: #DC2626;
+  --color-border-fitin: #E2DCC6;
+  --color-muted-fitin:  #6E6A5C;
+  --color-fg-fitin:     #241F18;
+  --color-error-fitin:  #DC2626;
 
   --font-heading: 'Syne', sans-serif;
   --font-body:    'Satoshi', 'Inter', sans-serif;
@@ -38,8 +41,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: #FFFFFF;
-  color: #2D2D2A;
+  background-color: #FBF8EE;
+  color: #241F18;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

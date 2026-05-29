@@ -12,7 +12,7 @@ export default function ProgressBar({ percent }: ProgressBarProps) {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-label={`Onboarding progress: ${percent}%`}
-      className="h-[3px] w-full bg-[#F0EDE0]"
+      className="h-[3px] w-full bg-[#E2DCC6]"
     >
       <motion.div
         className="h-full bg-[#53603E] origin-left"

@@ -21,12 +21,12 @@ export default function BarriersStep({ name, value, onToggle, onNext }: Barriers
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <h2
-          className="text-[22px] font-semibold tracking-[-0.02em] text-[#2D2D2A] leading-[1.3]"
+          className="text-[30px] font-semibold tracking-[-0.015em] text-[#241F18] leading-[1.22]"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           {firstName ? `What's held you back, ${firstName}?` : `What's made it hard to stay consistent?`}
         </h2>
-        <p className="text-[13px] text-[#8A8577]">Honest answers help us help you.</p>
+        <p className="text-[15px] text-[#6E6A5C]">Honest answers help us help you.</p>
       </div>
 
       <div className="flex flex-col gap-2.5" role="group" aria-label="Barriers to consistency">

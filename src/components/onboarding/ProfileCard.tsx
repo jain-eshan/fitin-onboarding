@@ -53,12 +53,12 @@ export default function ProfileCard({ profile, name, email }: ProfileCardProps) 
       {/* Success header */}
       <div className="flex flex-col gap-1">
         <h2
-          className="text-[24px] font-semibold tracking-[-0.02em] text-[#2D2D2A] leading-[1.25]"
+          className="text-[24px] font-semibold tracking-[-0.02em] text-[#241F18] leading-[1.25]"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           You're all set, {firstName}! 🎉
         </h2>
-        <p className="text-[13px] text-[#8A8577]">
+        <p className="text-[13px] text-[#6E6A5C]">
           Your trainer will reach out on WhatsApp within 24 hours.
         </p>
       </div>
@@ -68,7 +68,7 @@ export default function ProfileCard({ profile, name, email }: ProfileCardProps) 
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative overflow-hidden rounded-[24px] border border-[#E8E4D4] bg-white p-6 shadow-[0_4px_20px_rgba(83,96,62,0.08)]"
+        className="relative overflow-hidden rounded-[24px] border border-[#E2DCC6] bg-white p-6 shadow-[0_4px_20px_rgba(83,96,62,0.08)]"
       >
         <div
           className="absolute inset-x-0 top-0 h-1 rounded-t-[24px]"
@@ -91,12 +91,12 @@ export default function ProfileCard({ profile, name, email }: ProfileCardProps) 
 
         <motion.div variants={itemVariants} className="mb-5">
           <h3
-            className="text-[26px] font-semibold tracking-[-0.02em] text-[#2D2D2A]"
+            className="text-[26px] font-semibold tracking-[-0.02em] text-[#241F18]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             {profile.label}
           </h3>
-          <p className="text-[13px] text-[#8A8577] mt-1 leading-relaxed">
+          <p className="text-[13px] text-[#6E6A5C] mt-1 leading-relaxed">
             {profile.tagline}
           </p>
         </motion.div>
@@ -110,10 +110,10 @@ export default function ProfileCard({ profile, name, email }: ProfileCardProps) 
           ].map(stat => (
             <div
               key={stat.label}
-              className="rounded-[13px] border border-[#F0EDE0] bg-[#FAFAF5] p-3"
+              className="rounded-[13px] border border-[#F0EDE0] bg-[#FBF8EE] p-3"
             >
               <p className="text-[18px] font-bold text-[#53603E] leading-none">{stat.value}</p>
-              <p className="text-[11px] text-[#8A8577] uppercase tracking-wide mt-1">{stat.label}</p>
+              <p className="text-[11px] text-[#6E6A5C] uppercase tracking-wide mt-1">{stat.label}</p>
             </div>
           ))}
         </motion.div>
@@ -132,7 +132,7 @@ export default function ProfileCard({ profile, name, email }: ProfileCardProps) 
 
       {/* What happens next */}
       <div className="flex flex-col gap-3">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.06em] text-[#8A8577]">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.06em] text-[#6E6A5C]">
           What happens next
         </p>
         {[
@@ -144,7 +144,7 @@ export default function ProfileCard({ profile, name, email }: ProfileCardProps) 
             <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#EEF0E6] text-[11px] font-bold text-[#53603E]">
               {item.step}
             </span>
-            <p className="text-[13px] text-[#2D2D2A] pt-0.5">{item.text}</p>
+            <p className="text-[13px] text-[#241F18] pt-0.5">{item.text}</p>
           </div>
         ))}
       </div>
@@ -181,7 +181,7 @@ export default function ProfileCard({ profile, name, email }: ProfileCardProps) 
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-12 w-full items-center justify-center rounded-[14px] border border-[#E8E4D4] text-[14px] font-semibold text-[#53603E] transition-colors hover:border-[#53603E] hover:bg-[#F5F3E8] active:scale-[0.97]"
+          className="flex h-12 w-full items-center justify-center rounded-[14px] border border-[#E2DCC6] text-[14px] font-semibold text-[#53603E] transition-colors hover:border-[#53603E] hover:bg-[#F5F3E8] active:scale-[0.97]"
         >
           Message us on WhatsApp
         </a>

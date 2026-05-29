@@ -32,7 +32,7 @@ export default function OptionCard({
         'min-h-[52px]',
         selected
           ? 'border-[#53603E] bg-[#EEF0E6]'
-          : 'border-[#E8E4D4] bg-[#FAFAF5] hover:border-[#53603E] hover:bg-[#F5F3E8]',
+          : 'border-[#E2DCC6] bg-[#FAFAF5] hover:border-[#53603E] hover:bg-[#F5F3E8]',
         disabled && 'opacity-50 cursor-not-allowed'
       )}
     >
@@ -48,11 +48,11 @@ export default function OptionCard({
       </span>
 
       <span className="flex-1 min-w-0">
-        <span className="block text-[14px] font-medium text-[#2D2D2A] leading-snug">
+        <span className="block text-[14.5px] font-medium text-[#241F18] leading-snug">
           {label}
         </span>
         {sublabel && (
-          <span className="block text-[12px] text-[#8A8577] mt-0.5">
+          <span className="block text-[12px] text-[#6E6A5C] mt-0.5">
             {sublabel}
           </span>
         )}
